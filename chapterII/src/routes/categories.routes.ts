@@ -1,21 +1,28 @@
 import { Router, Request, Response } from "express";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Category } from "../model/Category";
+import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
 const categoriesRoutes = Router();
-
-const categories: Category[] = [];
+const categoriesRepository = new CategoriesRepository();
 
 categoriesRoutes.post("/", (request: Request, response: Response) => {
   const { name, description } = request.body;
 
-  const category = new Category();
+  const categoryAlreadyExists = categoriesRepository.findByName(name);
 
-  Object.assign(category, { name, description, created_at: new Date() });
+  if (categoryAlreadyExists) {
+    return response.status(400).json({ message: "Category Already Exists " });
+  }
 
-  categories.push(category);
+  categoriesRepository.create({ name, description });
 
-  return response.status(201).json({ categories });
+  response.status(201).send();
+});
+
+categoriesRoutes.get("/", (_request: Request, response: Response) => {
+  const all = categoriesRepository.list();
+
+  return response.json(all);
 });
 
 export { categoriesRoutes };
