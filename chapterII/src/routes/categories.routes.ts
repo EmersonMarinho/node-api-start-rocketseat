@@ -1,9 +1,14 @@
 import { Router, Request, Response } from "express";
 // eslint-disable-next-line import/no-extraneous-dependencies
+import multer from "multer";
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 
 const categoriesRoutes = Router();
+
+const upload = multer({
+  dest: "./tmp",
+});
 
 categoriesRoutes.post("/", (request: Request, response: Response) => {
   return createCategoryController.handle(request, response);
@@ -11,6 +16,12 @@ categoriesRoutes.post("/", (request: Request, response: Response) => {
 
 categoriesRoutes.get("/", (_request: Request, response: Response) => {
   return listCategoriesController.handle(_request, response);
+});
+
+categoriesRoutes.post("/import", upload.single("file"), (request, response) => {
+  const { file } = request;
+  console.log(file);
+  return response.send();
 });
 
 export { categoriesRoutes };
