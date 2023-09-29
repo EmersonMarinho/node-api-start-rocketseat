@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { v4 as uuidV4 } from "uuid";
 
 class Category {
