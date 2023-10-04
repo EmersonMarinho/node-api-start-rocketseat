@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { v4 as uuidV4 } from "uuid";
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 

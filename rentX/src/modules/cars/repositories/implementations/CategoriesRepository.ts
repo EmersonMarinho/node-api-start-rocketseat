@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Category } from "../../entities/Category";
 import {
   ICategoriesRepository,

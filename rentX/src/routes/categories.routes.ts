@@ -1,5 +1,4 @@
 import { Router } from "express";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import multer from "multer";
 import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
 import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";

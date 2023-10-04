@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateCategories1696265896895 implements MigrationInterface {
