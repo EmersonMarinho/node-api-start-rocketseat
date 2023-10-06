@@ -1,15 +1,13 @@
+import { Repository, getRepository } from "typeorm";
+
 import { Category } from "../../entities/Category";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "../ICategoriesRepository";
 
-import { Repository, getRepository } from "typeorm";
-
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
-
-  private static INSTANCE: CategoriesRepository;
 
   constructor() {
     this.repository = getRepository(Category);

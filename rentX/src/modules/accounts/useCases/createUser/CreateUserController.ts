@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserUseController {

@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { inject, injectable } from "tsyringe";
 import { compare } from "bcrypt";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { sign } from "jsonwebtoken";
+import { inject, injectable } from "tsyringe";
+
 import { AppError } from "../../../../errors/AppError";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IRequest {
   email: string;
